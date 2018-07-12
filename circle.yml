@@ -1,0 +1,17 @@
+machine:
+  timezone: Asia/Tokyo
+
+dependencies:
+  pre:
+    - go get -v github.com/spf13/hugo
+
+test:
+  override:
+    - hugo
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - aws s3 sync public s3://$S3_BACKET > /dev/null 2>&1
+      - aws cloudfront create-invalidation --distribution-id $CF_DIST_1 --paths "/*" > /dev/null 2>&1
