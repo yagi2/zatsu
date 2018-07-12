@@ -1,3 +1,20 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+baseURL = "https://zatsu.yagi2.com"
+languageCode = "ja"
+title = "ざつにいちゃん"
+theme = "hyde-hyde"
+
+disqusShortname = "zatsunii"
+googleAnalytics = "UA-28203375-9"
+
+[params]
+  author = "yagi2"
+  description = "やぎにいちゃんの雑記"
+  authorimage = "./img/profile_round.png"
+  dateformat = "2006, Jan 2"
+  highlightjs = true
+  highlightjsstyle = "github"
+  
+[params.social]
+  github = "yagi2"
+  twitter = "yaginier"
+  email = "mail@yagi2.com"
