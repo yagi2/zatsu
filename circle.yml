@@ -1,5 +1,10 @@
 machine:
   timezone: Asia/Tokyo
+  
+checkout:
+  post:
+    - git submodule init
+    - git submodule update
 
 dependencies:
   pre:
