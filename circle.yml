@@ -1,10 +1,11 @@
-checkout:
-  post:
-    - git submodule sync
-    - git submodule update --init --recursive
-
 machine:
   timezone: Asia/Tokyo
+
+general:
+  branches:
+    only:
+      - master
+      - /feature\/.*/
 
 dependencies:
   pre:
@@ -13,10 +14,10 @@ dependencies:
 test:
   override:
     - hugo
-    
+
 deployment:
-  push_to_server:
+  master:
     branch: master
-      commands:
-        - aws s3 sync public s3://$S3_BACKET > /dev/null 2>&1
-        - aws cloudfront create-invalidation --distribution-id $CF_DIST_1 --paths "/*" > /dev/null 2>&1
+    commands:
+      - aws s3 sync public s3://$S3_BACKET > /dev/null 2>&1
+      - aws cloudfront create-invalidation --distribution-id $CF_DIST_1 --paths "/*" > /dev/null 2>&1
